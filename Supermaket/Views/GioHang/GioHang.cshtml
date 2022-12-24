@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "GioHang";
+    Layout = "~/Views/HTMLfile/ThanhToan.cshtml";
+}
+
+@using Supermaket.Models
+@model List<GioHang>
+<table class="table">
+    <thead>
+        <tr>
+            <td>Mã sản phẩm</td>
+            <td>Tên sản phẩm</td>
+            <td></td>
+            <td>Đơn giá</td>
+            <td>Số lượng</td>
+            <td>Thành tiền</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.sMaHang</td>
+                <td>@item.sTenHang</td>
+                <td>
+                    <img src="@Url.Content("~/Images/Product/" +item.sAnh)"
+                         width="50" height="55" />
+                </td>
+                <td>@item.dGiaBan</td>
+                <td>@item.iSoLuong</td>
+                <td>@item.dThanhTien</td>
+            </tr>
+        }
+
+    </tbody>
+    <tfoot>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Tổng tiền: @Model.Sum(n => n.dThanhTien)</td>
+        </tr>
+    </tfoot>
+</table>
+
